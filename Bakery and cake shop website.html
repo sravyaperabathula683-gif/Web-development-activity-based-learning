@@ -1,0 +1,356 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sweet Treats Bakery</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #fff8f3;
+            color: #49302c;
+        }
+
+        header {
+            background: #6b2638;
+            color: white;
+            padding: 20px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        header h1 {
+            font-size: 27px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #ffd4b8;
+        }
+
+        .hero {
+            min-height: 350px;
+            background: linear-gradient(120deg, #f6d5ca, #fff0df);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 45px 20px;
+        }
+
+        .hero h2 {
+            font-size: 42px;
+            color: #782d40;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 22px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #8c354a;
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .btn:hover {
+            background: #54202e;
+        }
+
+        section {
+            padding: 45px 7%;
+        }
+
+        .section-title {
+            text-align: center;
+            color: #782d40;
+            font-size: 30px;
+            margin-bottom: 30px;
+        }
+
+        .offer {
+            background: #782d40;
+            color: white;
+            text-align: center;
+            padding: 22px;
+            font-size: 20px;
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .product {
+            background: white;
+            border-radius: 14px;
+            overflow: hidden;
+            text-align: center;
+            box-shadow: 0 4px 15px #00000012;
+            padding-bottom: 22px;
+            transition: transform 0.3s;
+        }
+
+        .product:hover {
+            transform: translateY(-6px);
+        }
+
+        .product img {
+            width: 100%;
+            height: 210px;
+            object-fit: cover;
+        }
+
+        .product h3 {
+            margin: 17px 0 10px;
+        }
+
+        .product p {
+            margin-bottom: 15px;
+        }
+
+        .price {
+            color: #a02f49;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+
+        .about {
+            background: #f9e6dc;
+            text-align: center;
+            line-height: 1.8;
+        }
+
+        .contact {
+            text-align: center;
+            line-height: 2;
+        }
+
+        footer {
+            background: #4a202c;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        @media (max-width: 800px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav a {
+                display: inline-block;
+                margin: 7px;
+            }
+
+            .products,
+            .gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero h2 {
+                font-size: 32px;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .products,
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 30px 5%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>🍰 Sweet Treats Bakery</h1>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#menu">Menu</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+
+<section class="hero" id="home">
+    <div>
+        <h2>Freshly Baked Happiness!</h2>
+        <p>Delicious cakes and sweet memories made with love.</p>
+        <a href="#menu" class="btn">Explore Our Menu</a>
+    </div>
+</section>
+
+<div class="offer">
+    🎉 Special Offer: Get 10% OFF on your cake order!
+</div>
+
+<section id="menu">
+    <h2 class="section-title">Our Delicious Menu</h2>
+
+    <div class="products">
+
+        <div class="product">
+            <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=700&q=80"
+                 alt="Chocolate birthday cake">
+            <h3>Chocolate Cake</h3>
+            <p>Rich and creamy chocolate delight.</p>
+            <p class="price">₹450</p>
+            <button class="btn" onclick="orderCake('Chocolate Cake', 450)">
+                Order Now
+            </button>
+        </div>
+
+        <div class="product">
+            <img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=700&q=80"
+                 alt="Strawberry dessert">
+            <h3>Strawberry Cake</h3>
+            <p>Sweet strawberry-flavoured treat.</p>
+            <p class="price">₹500</p>
+            <button class="btn" onclick="orderCake('Strawberry Cake', 500)">
+                Order Now
+            </button>
+        </div>
+
+        <div class="product">
+            <img src="https://images.unsplash.com/photo-1586985289688-ca3cf47d3e6e?auto=format&fit=crop&w=700&q=80"
+                 alt="Decorated birthday cake">
+            <h3>Birthday Cake</h3>
+            <p>A special cake for your special day.</p>
+            <p class="price">₹650</p>
+            <button class="btn" onclick="orderCake('Birthday Cake', 650)">
+                Order Now
+            </button>
+        </div>
+
+        <div class="product">
+            <img src="https://images.unsplash.com/photo-1550617931-e17a7b70dce2?auto=format&fit=crop&w=700&q=80"
+                 alt="Fresh cupcakes">
+            <h3>Cupcakes</h3>
+            <p>Soft, fluffy and colourful cupcakes.</p>
+            <p class="price">₹120</p>
+            <button class="btn" onclick="orderCake('Cupcakes', 120)">
+                Order Now
+            </button>
+        </div>
+
+        <div class="product">
+            <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=700&q=80"
+                 alt="Glazed doughnuts">
+            <h3>Sweet Donuts</h3>
+            <p>Delicious donuts for every occasion.</p>
+            <p class="price">₹100</p>
+            <button class="btn" onclick="orderCake('Sweet Donuts', 100)">
+                Order Now
+            </button>
+        </div>
+
+        <div class="product">
+            <img src="https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=700&q=80"
+                 alt="Freshly baked cookies">
+            <h3>Cookies</h3>
+            <p>Crispy, tasty and freshly baked cookies.</p>
+            <p class="price">₹150</p>
+            <button class="btn" onclick="orderCake('Cookies', 150)">
+                Order Now
+            </button>
+        </div>
+
+    </div>
+</section>
+
+<section id="gallery">
+    <h2 class="section-title">Our Cake Gallery</h2>
+
+    <div class="gallery">
+        <img src="https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?auto=format&fit=crop&w=700&q=80"
+             alt="Celebration cake">
+        <img src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?auto=format&fit=crop&w=700&q=80"
+             alt="Bakery dessert">
+        <img src="https://images.unsplash.com/photo-1571115177098-24ec42ed204d?auto=format&fit=crop&w=700&q=80"
+             alt="Decorated cake">
+    </div>
+</section>
+
+<section class="about" id="about">
+    <h2 class="section-title">About Our Bakery</h2>
+    <p>
+        Welcome to Sweet Treats Bakery! We make delicious cakes,
+        pastries, cookies and cupcakes with love and care.
+        Our goal is to make every celebration memorable.
+        We also accept custom cake design requests.
+    </p>
+</section>
+
+<section id="contact" class="contact">
+    <h2 class="section-title">Contact Us</h2>
+    <p>📍 Address: Main Road, Andhra Pradesh</p>
+    <p>📞 Phone: 9876543210</p>
+    <p>✉️ Email: sweettreats@example.com</p>
+    <p>🕒 Opening Hours: 9:00 AM – 9:00 PM</p>
+</section>
+
+<footer>
+    <p>© 2026 Sweet Treats Bakery | Made with ❤️</p>
+</footer>
+
+<script>
+    function orderCake(name, price) {
+        alert(
+            "Thank you for choosing Sweet Treats Bakery!\\n" +
+            "Selected Item: " + name + "\\n" +
+            "Price: ₹" + price + "\\n\\n" +
+            "This is a demo website. Please contact the bakery to order."
+        );
+    }
+</script>
+
+</body>
+</html>
