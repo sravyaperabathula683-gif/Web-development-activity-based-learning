@@ -1,0 +1,394 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily News Portal</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f4f6f9;
+            color: #222;
+        }
+
+        header {
+            background: #172554;
+            color: white;
+            padding: 22px 7%;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        nav {
+            background: #dc2626;
+            padding: 15px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #ffe4e6;
+        }
+
+        .breaking {
+            background: #fff;
+            padding: 15px 7%;
+            border-bottom: 2px solid #dc2626;
+        }
+
+        .breaking span {
+            background: #dc2626;
+            color: white;
+            padding: 7px 12px;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        .container {
+            padding: 30px 7%;
+        }
+
+        .search-box {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .search-box input {
+            flex: 1;
+            min-width: 0;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        .search-box button {
+            padding: 12px 20px;
+            background: #172554;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .section-title {
+            color: #172554;
+            border-left: 5px solid #dc2626;
+            padding-left: 12px;
+            margin-bottom: 22px;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .news-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 12px #00000012;
+            transition: transform 0.3s;
+        }
+
+        .news-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .news-card img {
+            width: 100%;
+            height: 190px;
+            object-fit: cover;
+        }
+
+        .news-content {
+            padding: 18px;
+        }
+
+        .category {
+            color: #dc2626;
+            font-size: 13px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .news-content h3 {
+            margin: 10px 0;
+            color: #172554;
+        }
+
+        .news-content p {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+
+        .author {
+            color: #777;
+            font-size: 13px;
+        }
+
+        .read-btn {
+            display: inline-block;
+            margin-top: 12px;
+            background: #172554;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 15px;
+            cursor: pointer;
+        }
+
+        .read-btn:hover {
+            background: #dc2626;
+        }
+
+        .no-results {
+            display: none;
+            padding: 20px;
+            text-align: center;
+            background: white;
+            margin-top: 15px;
+        }
+
+        footer {
+            background: #172554;
+            color: white;
+            text-align: center;
+            padding: 22px;
+            margin-top: 30px;
+        }
+
+        @media (max-width: 850px) {
+            .news-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            nav a {
+                display: inline-block;
+                margin: 8px;
+            }
+        }
+
+        @media (max-width: 550px) {
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+
+            header h1 {
+                font-size: 26px;
+            }
+
+            .container {
+                padding: 20px 5%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>📰 DAILY NEWS</h1>
+    <p>Your World. Your News. Every Day.</p>
+</header>
+
+<nav>
+    <a href="#home">Home</a>
+    <a href="#national">National</a>
+    <a href="#international">International</a>
+    <a href="#sports">Sports</a>
+    <a href="#technology">Technology</a>
+    <a href="#business">Business</a>
+</nav>
+
+<div class="breaking">
+    <span>BREAKING</span>
+    Welcome to Daily News — Your daily news update portal.
+</div>
+
+<main class="container" id="home">
+
+    <div class="search-box">
+        <input type="text" id="searchInput"
+               placeholder="Search news by title or category...">
+        <button onclick="searchNews()">Search</button>
+    </div>
+
+    <h2 class="section-title">Latest Headlines</h2>
+
+    <div class="news-grid" id="newsGrid">
+
+        <article class="news-card" id="national"
+                 data-category="national">
+            <img src="https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?auto=format&fit=crop&w=700&q=80"
+                 alt="Government building">
+            <div class="news-content">
+                <span class="category">National</span>
+                <h3>National News and Updates</h3>
+                <p>Read the latest updates on public affairs,
+                   education and important national events.</p>
+                <div class="author">By News Desk | 5 min read</div>
+                <button class="read-btn"
+                    onclick="readNews('National News and Updates',
+                    'This is a sample national news article for the student project.')">
+                    Read More
+                </button>
+            </div>
+        </article>
+
+        <article class="news-card" id="international"
+                 data-category="international">
+            <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=700&q=80"
+                 alt="International business meeting">
+            <div class="news-content">
+                <span class="category">International</span>
+                <h3>World News Today</h3>
+                <p>Explore international developments, global
+                   cooperation and events around the world.</p>
+                <div class="author">By World Reporter | 4 min read</div>
+                <button class="read-btn"
+                    onclick="readNews('World News Today',
+                    'This is a sample international news article for the student project.')">
+                    Read More
+                </button>
+            </div>
+        </article>
+
+        <article class="news-card" id="sports"
+                 data-category="sports">
+            <img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=700&q=80"
+                 alt="Athletes running on a track">
+            <div class="news-content">
+                <span class="category">Sports</span>
+                <h3>Latest Sports Highlights</h3>
+                <p>Catch up on sports competitions, player
+                   performances and tournament highlights.</p>
+                <div class="author">By Sports Desk | 3 min read</div>
+                <button class="read-btn"
+                    onclick="readNews('Latest Sports Highlights',
+                    'This is a sample sports news article for the student project.')">
+                    Read More
+                </button>
+            </div>
+        </article>
+
+        <article class="news-card" id="technology"
+                 data-category="technology">
+            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=700&q=80"
+                 alt="Electronic technology circuit board">
+            <div class="news-content">
+                <span class="category">Technology</span>
+                <h3>Technology and Innovation</h3>
+                <p>Discover new developments in computers,
+                   artificial intelligence and digital technology.</p>
+                <div class="author">By Tech Reporter | 6 min read</div>
+                <button class="read-btn"
+                    onclick="readNews('Technology and Innovation',
+                    'This is a sample technology news article for the student project.')">
+                    Read More
+                </button>
+            </div>
+        </article>
+
+        <article class="news-card" id="business"
+                 data-category="business">
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=700&q=80"
+                 alt="Business analytics charts">
+            <div class="news-content">
+                <span class="category">Business</span>
+                <h3>Business and Market Updates</h3>
+                <p>Explore business trends, entrepreneurship,
+                   industry updates and financial developments.</p>
+                <div class="author">By Business Desk | 4 min read</div>
+                <button class="read-btn"
+                    onclick="readNews('Business and Market Updates',
+                    'This is a sample business news article for the student project.')">
+                    Read More
+                </button>
+            </div>
+        </article>
+
+        <article class="news-card"
+                 data-category="education">
+            <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=700&q=80"
+                 alt="Books in a library">
+            <div class="news-content">
+                <span class="category">Education</span>
+                <h3>Education News and Updates</h3>
+                <p>Stay informed about learning opportunities,
+                   academic events and educational developments.</p>
+                <div class="author">By Education Desk | 3 min read</div>
+                <button class="read-btn"
+                    onclick="readNews('Education News and Updates',
+                    'This is a sample education news article for the student project.')">
+                    Read More
+                </button>
+            </div>
+        </article>
+
+    </div>
+
+    <p class="no-results" id="noResults">
+        No matching news articles found.
+    </p>
+
+</main>
+
+<footer>
+    <p>© 2026 Daily News Portal</p>
+    <p>Designed using HTML, CSS and JavaScript</p>
+</footer>
+
+<script>
+    function searchNews() {
+        const input = document.getElementById("searchInput");
+        const query = input.value.toLowerCase().trim();
+        const cards = document.querySelectorAll(".news-card");
+        let found = 0;
+
+        cards.forEach(function(card) {
+            const text = card.innerText.toLowerCase();
+
+            if (text.includes(query)) {
+                card.style.display = "block";
+                found++;
+            } else {
+                card.style.display = "none";
+            }
+        });
+
+        document.getElementById("noResults").style.display =
+            found === 0 ? "block" : "none";
+    }
+
+    document.getElementById("searchInput")
+        .addEventListener("input", searchNews);
+
+    function readNews(title, content) {
+        alert(title + "\n\n" + content +
+              "\n\nNote: This is demonstration content.");
+    }
+</script>
+
+</body>
+</html>
